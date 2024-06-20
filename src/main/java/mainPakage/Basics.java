@@ -6,9 +6,7 @@ import io.restassured.path.json.JsonPath;
 import java.util.Dictionary;
 import java.util.Map;
 
-import static Data.getPostBody.getPostBody;
-import static Data.getPostBody.getPutBody;
-import static io.restassured.RestAssured.get;
+import static Data.getBody.*;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
