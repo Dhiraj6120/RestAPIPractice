@@ -1,12 +1,9 @@
 package mainPakage;
 
 import io.restassured.RestAssured;
-import io.restassured.path.json.JsonPath;
 
-import java.util.Dictionary;
-import java.util.Map;
-
-import static Data.getBody.*;
+import static macros.getBody.*;
+import static macros.rawToJson.*;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -23,8 +20,8 @@ public class Basics {
                 .body(getPostBody())
                 .when().post("/maps/api/place/add/json").
                 then().log().all().assertThat().extract().response().asString();
-        JsonPath jsonPath = new JsonPath(response);
-        placeID = jsonPath.getString("place_id");
+
+        toJSON(response).getString("place_id");
 
         System.out.println("Post Post");
 
