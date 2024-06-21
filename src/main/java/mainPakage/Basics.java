@@ -31,7 +31,7 @@ public class Basics {
 
         System.out.println("Post Get 1");
 
-//
+
         given().log().all().queryParam("key", "qaclick123").queryParam("place_id", placeID)
                 .header("Content-Type","application/json")
                 .body(getPutBody(placeID))
@@ -39,12 +39,15 @@ public class Basics {
                         .then().log().all().assertThat().statusCode(200);
 
         System.out.println("Post Put");
-//
+
         given().log().all().queryParam("key", "qaclick123").queryParam("place_id", placeID)
                 .when().get("/maps/api/place/get/json")
                 .then().log().all().body("address", equalTo("570 10th ave, New York"));
 
         System.out.println("Post Get 2");
+
+
+
 
 
     }
