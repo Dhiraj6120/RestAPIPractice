@@ -40,7 +40,7 @@ public class getBody {
                 "    \"purchaseAmount\": 1162,\r\n" +
                 "    \"website\": \"rahulshettyacademy.com\"\r\n" +
                 "  },\r\n" +
-                "  \"courses\": [\r\n" +
+                "  \"Courses\": [\r\n" +
                 "    {\r\n" +
                 "      \"title\": \"Selenium Python\",\r\n" +
                 "      \"price\": 50,\r\n" +

@@ -2,12 +2,13 @@ package mainPakage;
 
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
+import macros.SaveAsJson;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 import static macros.rawToJson.toJSON;
 
-public class oAuth {
+public class OAuth {
 
     String access_token = "";
     @Test
@@ -31,8 +32,9 @@ public class oAuth {
         String getCourses = given().queryParam("access_token", access_token)
                 .when().get()
                 .then().log().all().extract().response().asString();
-        
 
+
+        SaveAsJson.StringToJson(getCourses);
     }
 
 }

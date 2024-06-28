@@ -12,26 +12,26 @@ public class PracticeJSON extends rawToJson {
         JsonPath js;
         js = toJSON(getBody.getBookDetails());
 
-        //Total Courses in Json
-        int totalCourses = js.getInt("courses.size()");
-        System.out.println("Total Courses: " + totalCourses);
+        //Total mainAPIContract in Json
+        int totalCourses = js.getInt("Courses.size()");
+        System.out.println("Total mainAPIContract: " + totalCourses);
 
         //Total purchase amount
         int expectedTotalPurchaseAmount = js.getInt("dashboard.purchaseAmount");
         System.out.println("Total Amount: " + expectedTotalPurchaseAmount);
 
-        String tilteOFFstbook = js.getString("courses[0].title");
+        String tilteOFFstbook = js.getString("Courses[0].title");
 
         System.out.println("Title of fst course: " + tilteOFFstbook);
 
         int actualTotalPurchaseAmount = 0;
 
         for(int i = 0; i<totalCourses; i++){
-            String title = js.getString("courses[" + i + "].title");
-            actualTotalPurchaseAmount += (js.getInt("courses[" + i + "].price")) * (js.getInt("courses[" + i + "].copies"));
+            String title = js.getString("Courses[" + i + "].title");
+            actualTotalPurchaseAmount += (js.getInt("Courses[" + i + "].price")) * (js.getInt("Courses[" + i + "].copies"));
         if(title.equals("RPA")) {
-                int bookPrice = js.getInt("courses[" + i + "].price");
-                int copies = js.getInt("courses[" + i + "].copies");
+                int bookPrice = js.getInt("Courses[" + i + "].price");
+                int copies = js.getInt("Courses[" + i + "].copies");
 
                 System.out.println("We have " + title + " at price of " + bookPrice + " with total copies of " + copies);
 
