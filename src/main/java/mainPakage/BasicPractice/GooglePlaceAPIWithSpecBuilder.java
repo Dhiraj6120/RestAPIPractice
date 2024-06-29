@@ -30,8 +30,7 @@ public class GooglePlaceAPIWithSpecBuilder {
 
         String response = given().spec(reqAdd)
                 .body(getPostBody(s1, s2))
-                .when().post("/maps/api/place/add/json").
-                then().spec(res).extract().response().asString();
+                .when().post("/maps/api/place/add/json").then().spec(res).extract().response().asString();
 
         placeID = toJSON(response).getString("place_id");
 
