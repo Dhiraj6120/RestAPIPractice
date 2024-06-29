@@ -1,4 +1,4 @@
-package mainPakage;
+package mainPakage.BasicPractice;
 
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
