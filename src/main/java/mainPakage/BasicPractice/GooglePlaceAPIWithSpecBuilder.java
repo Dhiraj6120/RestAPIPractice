@@ -15,8 +15,6 @@ import static macros.rawToJson.toJSON;
 public class GooglePlaceAPIWithSpecBuilder {
     @Test(dataProvider = "getAddressDaaaata")
     public void googleAPIs(String s1, String s2){
-        //TODO: Create Method for CRUD operation
-
         //given: All input details
         //when: Submit the API -resource, http method
         //then:

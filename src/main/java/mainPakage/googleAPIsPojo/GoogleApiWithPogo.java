@@ -1,6 +1,8 @@
 package mainPakage.googleAPIsPojo;
 
-import io.restassured.RestAssured;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.http.ContentType;
+import io.restassured.specification.RequestSpecification;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -8,8 +10,11 @@ import java.util.List;
 
 import static io.restassured.RestAssured.given;
 
-public class GoogleAPIwithPogo {
+public class GoogleApiWithPogo {
     GoogleAPIPostResponse postAPI;
+
+    RequestSpecification request = new RequestSpecBuilder().setBaseUri("https://rahulshettyacademy.com").setContentType(ContentType.JSON)
+            .addQueryParam("key","qaclick123").build();
 
     @Test
     public void googleAPIPost(){
@@ -29,8 +34,7 @@ public class GoogleAPIwithPogo {
         loc.setLng(-98.1212312);
 
         googleAddPlace.setLocation(loc);
-        RestAssured.baseURI = "https://rahulshettyacademy.com";
-        postAPI = given().queryParam("key","qaclick123")
+        postAPI = given().spec(request)
                 .body(googleAddPlace)
                 .when().post("/maps/api/place/add/json")
                 .then().extract().response().as(GoogleAPIPostResponse.class);
@@ -38,7 +42,7 @@ public class GoogleAPIwithPogo {
 
     @Test
     public void googleAPIget(){
-        given().queryParam("key", "qaclick123").queryParam("place_id", postAPI.getPlace_id())
+        given().spec(request).queryParam("place_id", postAPI.getPlace_id())
                 .when().get("/maps/api/place/get/json")
                 .then().log().all();
     }
